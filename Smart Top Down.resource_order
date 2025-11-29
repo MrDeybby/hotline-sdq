@@ -1,0 +1,27 @@
+{
+  "FolderOrderSettings":[
+    {"name":"Player","order":1,"path":"folders/Player.yy",},
+  ],
+  "ResourceOrderSettings":[
+    {"name":"obj_EnemyA","order":13,"path":"objects/obj_EnemyA/obj_EnemyA.yy",},
+    {"name":"obj_EnemyB","order":17,"path":"objects/obj_EnemyB/obj_EnemyB.yy",},
+    {"name":"obj_EnemyC","order":19,"path":"objects/obj_EnemyC/obj_EnemyC.yy",},
+    {"name":"obj_EnemyParent","order":12,"path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},
+    {"name":"obj_hitbox","order":16,"path":"objects/obj_hitbox/obj_hitbox.yy",},
+    {"name":"obj_Human","order":2,"path":"objects/obj_Human/obj_Human.yy",},
+    {"name":"obj_LevelControl","order":11,"path":"objects/obj_LevelControl/obj_LevelControl.yy",},
+    {"name":"obj_potion","order":9,"path":"objects/obj_potion/obj_potion.yy",},
+    {"name":"obj_projectile","order":3,"path":"objects/obj_projectile/obj_projectile.yy",},
+    {"name":"obj_spike","order":7,"path":"objects/obj_spike/obj_spike.yy",},
+    {"name":"obj_wall","order":5,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"spr_EnemyA","order":14,"path":"sprites/spr_EnemyA/spr_EnemyA.yy",},
+    {"name":"spr_EnemyB","order":18,"path":"sprites/spr_EnemyB/spr_EnemyB.yy",},
+    {"name":"spr_EnemyC","order":20,"path":"sprites/spr_EnemyC/spr_EnemyC.yy",},
+    {"name":"spr_hitbox","order":15,"path":"sprites/spr_hitbox/spr_hitbox.yy",},
+    {"name":"spr_Human","order":1,"path":"sprites/spr_Human/spr_Human.yy",},
+    {"name":"spr_potion","order":8,"path":"sprites/spr_potion/spr_potion.yy",},
+    {"name":"spr_projectile","order":4,"path":"sprites/spr_projectile/spr_projectile.yy",},
+    {"name":"spr_spike","order":6,"path":"sprites/spr_spike/spr_spike.yy",},
+    {"name":"spr_wall","order":10,"path":"sprites/spr_wall/spr_wall.yy",},
+  ],
+}

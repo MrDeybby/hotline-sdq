@@ -1,0 +1,33 @@
+# GameMaker build junk
+*.yyz
+*.yyp.compiled
+*.gmz
+*.gmez
+*.yydebug
+*.local*
+*.log
+
+# Cache
+.cache/
+cache/
+*.temp
+*.tmp
+
+# Build outputs
+output/
+build/
+bin/
+exe/
+*.zip
+
+# Visual Studio Code folders
+.vscode/
+
+# OS trash
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# GameMaker generated
+*.yyc
+*.yymps
