@@ -1,42 +1,45 @@
-// 1. Limpiar inputs al inicio del frame
+// 1. BUSCAR OBJETIVO
+var _target = noone;
+var _min_dist = 999999;
+
+with (obj_Player) {
+    if (hp > 0 && id != other.id && team != other.team) {
+        var _d = point_distance(x, y, other.x, other.y);
+        if (_d < _min_dist) {
+            _min_dist = _d;
+            _target = id;
+        }
+    }
+}
+
+// 2. LÓGICA TIPO B (TORRETA)
+// Forzamos inputs a 0 para asegurar que la IA no intente caminar
 input_x = 0;
 input_y = 0;
-input_melee = false;
 input_shoot = false;
 input_shield = false;
 
-// 2. Detectar al jugador
-var _player = instance_nearest(x, y, obj_Human);
-var _see_player = false;
-var _dist_player = 9999;
+// Anulamos el sistema de pathfinding del padre poniendo el destino en mis pies
+target_x = x;
+target_y = y;
 
-if (instance_exists(_player)) {
-    _dist_player = point_distance(x, y, _player.x, _player.y);
-    // Chequear si hay pared en medio
-    _see_player = !collision_line(x, y, _player.x, _player.y, obj_wall, false, false);
+if (instance_exists(_target)) {
+    // Girar hacia el objetivo (Esto SÍ lo hace, aunque no camine)
+    input_aim_dir = point_direction(x, y, _target.x, _target.y);
+
+    // Zona de Defensa (Escudo)
+    if (_min_dist < 120) {
+        input_shield = true;
+    } 
+    // Zona de Ataque (Disparo)
+    else {
+        // Disparar solo si veo al objetivo (Raycast)
+        if (!collision_line(x, y, _target.x, _target.y, obj_wall, false, false)) {
+            input_shoot = true;
+        }
+    }
 }
 
-// 3. MÁQUINA DE ESTADOS LÓGICA
-
-// CASO 1: Jugador muy cerca -> ACTIVAR ESCUDO
-if (_dist_player < 100) { // 100 pixeles de radio de pánico
-    input_shield = true;
-    
-}
-
-// CASO 2: Jugador a la vista pero lejos -> DISPARAR
-else if (_see_player) {
-    // Apuntar
-    input_aim_dir = point_direction(x, y, _player.x, _player.y);
-    
-    // Disparar
-    input_shoot = true;
-}
-
-// CASO 3: No veo a nadie -> IDLE (Quieto)
-else {
-
-}
-
-// 4. Ejecutar Físicas
+// 3. EJECUTAR FÍSICAS
+// Al tener run_spd = 0 (en el Create) e input_x/y = 0, se quedará estático
 event_inherited();

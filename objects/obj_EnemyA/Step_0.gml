@@ -1,36 +1,49 @@
-input_melee = false;
+// 1. BUSCAR OBJETIVO VÁLIDO (Que no sea yo ni mi equipo)
+var _target = noone;
+var _min_dist = 999999;
 
-// Variables locales para facilitar lectura
-var _player = instance_nearest(x, y, obj_Human);
+with (obj_Player) {
+    // Si está vivo, no soy yo, y es de otro equipo (Aliado vs Enemigo)
+    if (hp > 0 && id != other.id && team != other.team) {
+        var _d = point_distance(x, y, other.x, other.y);
+        if (_d < _min_dist) {
+            _min_dist = _d;
+            _target = id;
+        }
+    }
+}
+
+// 2. LÓGICA DE COMPORTAMIENTO
 var _potion = instance_nearest(x, y, obj_potion);
-var _dist_player = (instance_exists(_player)) ? point_distance(x, y, _player.x, _player.y) : 9999;
-var _see_player = (instance_exists(_player)) ? !collision_line(x, y, _player.x, _player.y, obj_wall, false, false) : false;
+input_melee = false; 
 
-// --- MÁQUINA DE ESTADOS LÓGICA ---
-
-// PRIORIDAD 1: Supervivencia (Buscar Pócima si vida < 30%)
-if (hp_ < (max_hp * 0.3) && instance_exists(_potion)) {
+// Prioridad 1: Curarse si vida baja (< 30%)
+if (hp < (max_hp * 0.3) && instance_exists(_potion)) {
     target_x = _potion.x;
     target_y = _potion.y;
-    // La lógica de movimiento del Padre (Inherited) nos llevará allá
 }
-// PRIORIDAD 2: Ataque (Si veo al jugador o está cerca)
-else if (instance_exists(_player) && (_dist_player < sight_range || _see_player)) {
+// Prioridad 2: Atacar al objetivo encontrado
+else if (instance_exists(_target)) {
+    target_x = _target.x;
+    target_y = _target.y;
     
-    target_x = _player.x;
-    target_y = _player.y;
+    // Apuntar siempre al objetivo
+    input_aim_dir = point_direction(x, y, _target.x, _target.y);
     
-    // Si estoy suficientemente cerca, GOLPEAR
-	if (_dist_player <= 60) { 
-	        input_melee = true; 
-	        input_aim_dir = point_direction(x, y, _player.x, _player.y);
-	    }
+    // Si estoy cerca, golpear (Rango aumentado a 60 para asegurar el golpe)
+    if (_min_dist < 60) {
+        input_melee = true;
+    }
 }
-// PRIORIDAD 3: Idle (Quedarse quieto)
 else {
+    // Si no hay nadie, quedarse quieto (o podrías poner patrulla aquí)
     target_x = x;
     target_y = y;
 }
 
-// Ejecutar movimiento (Llamar al Padre Enemy -> Padre Player)
+// 3. EJECUTAR MOVIMIENTO (Padre)
 event_inherited();
+
+// 4. LÍMITES DE SALA
+x = clamp(x, 16, room_width - 16);
+y = clamp(y, 16, room_height - 16);

@@ -1,28 +1,21 @@
-// Físicas
-hspd = 0;
-vspd = 0;
-spd = 0;
-run_spd = 4;
+spd = 4;            // Velocidad
+hp = 100;           // Vida
+max_hp = 100;
 
-// Estadísticas
-hp_ = 10;
-max_hp = 10;
-shield_ = 100;       
+// Escudo
+shield_ = 100;
 max_shield = 100;
-shield_regen = 0.5;
+shield_broken = false; 
 
-// Cooldowns
 can_shoot = true;
-shoot_cooldown = 20;
 can_melee = true;
-melee_cooldown = 30;
 
 state = "move";
 
-// Variables Input
-input_x = 0;      
-input_y = 0;  
-input_shield = false;
-input_shoot = false;
-input_melee = false;
-input_aim_dir = 0; 
+
+max_ammo = 7;       // Balas máximas
+current_ammo = 7;   // Balas actuales
+is_reloading = false; // ¿Está recargando?
+reload_time = 180;  // 3 segundos (3 * 60 frames)
+
+team = "ally";

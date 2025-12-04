@@ -1,8 +1,20 @@
-// "other" es el objeto con el que chocamos (el personaje)
-// "owner" es la variable que guardamos de quién disparó la bala
+// Verificamos que exista el dueño y que no nos estemos disparando a nosotros mismos
+if (variable_instance_exists(id, "owner") && owner != other.id) {
+    
+    // 1. APLICAR DAÑO (Usando la variable 'damage' del proyectil)
+    if (other.state == "shield") {
+        other.shield_ -= damage; // Restar al escudo
+    } else {
+        other.hp -= damage;     // Restar a la vida ojo: hp_ con guion bajo)
+    }
 
-// Si chocamos con alguien que NO es el dueño
-if (other.id != owner) {
-    other.hp_ -= damage; // Restar vida
-    instance_destroy();  // Destruir la bala
+    // 2. RECOMPENSAR AL AGENTE (IA)
+    // Si el dueño del disparo existe y es un Bot, le sumamos puntos
+    if (instance_exists(owner) && owner.object_index == obj_Bot) {
+        owner.damage_dealt += damage; 
+        owner.shots_hit += 1; // Opcional: contar balas acertadas para estadísticas
+    }
+
+    // 3. DESTRUIR PROYECTIL
+    instance_destroy(); 
 }

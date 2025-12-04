@@ -1,1 +1,1 @@
-hp_ = 0;
+hp -= 5; // Daño rápido

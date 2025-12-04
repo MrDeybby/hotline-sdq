@@ -1,3 +1,2 @@
-owner = noone;   // ¿Quién pegó?
-damage = 2;      
-alarm[0] = 5;   
+image_blend = c_white;
+alarm[0] = 5;
