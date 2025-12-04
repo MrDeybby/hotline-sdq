@@ -3,13 +3,14 @@
   "%Name":"obj_EnemyB",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_EnemyB",
   "overriddenProperties":[],
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Enemies",
+    "path":"folders/Enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_EnemyParent",
@@ -33,8 +34,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_EnemyB",
-    "path":"sprites/spr_EnemyB/spr_EnemyB.yy",
+    "name":"purple_character",
+    "path":"sprites/purple_character/purple_character.yy",
   },
   "spriteMaskId":null,
   "visible":true,

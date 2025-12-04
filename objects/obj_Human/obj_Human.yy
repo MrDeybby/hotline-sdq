@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_Human",
-    "path":"sprites/spr_Human/spr_Human.yy",
+    "name":"green_character",
+    "path":"sprites/green_character/green_character.yy",
   },
   "spriteMaskId":null,
   "visible":true,

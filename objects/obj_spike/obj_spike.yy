@@ -1,13 +1,15 @@
 {
   "$GMObject":"",
   "%Name":"obj_spike",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_spike",
   "overriddenProperties":[],
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Hazards",
+    "path":"folders/Hazards.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_spike",
-    "path":"sprites/spr_spike/spr_spike.yy",
+    "name":"floor_trap",
+    "path":"sprites/floor_trap/floor_trap.yy",
   },
   "spriteMaskId":null,
   "visible":true,

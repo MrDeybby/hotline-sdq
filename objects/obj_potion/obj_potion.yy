@@ -1,13 +1,15 @@
 {
   "$GMObject":"",
   "%Name":"obj_potion",
-  "eventList":[],
+  "eventList":[
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+  ],
   "managed":true,
   "name":"obj_potion",
   "overriddenProperties":[],
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Items",
+    "path":"folders/Items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -28,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_potion",
-    "path":"sprites/spr_potion/spr_potion.yy",
+    "name":"barrels",
+    "path":"sprites/barrels/barrels.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -4,14 +4,15 @@
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_EnemyParent","path":"objects/obj_EnemyParent/obj_EnemyParent.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_Player","path":"objects/obj_Player/obj_Player.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
   "name":"obj_hitbox",
   "overriddenProperties":[],
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Attacks",
+    "path":"folders/Attacks.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -32,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_hitbox",
-    "path":"sprites/spr_hitbox/spr_hitbox.yy",
+    "name":"spr_caja",
+    "path":"sprites/spr_caja/spr_caja.yy",
   },
   "spriteMaskId":null,
   "visible":true,

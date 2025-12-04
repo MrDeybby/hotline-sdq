@@ -8,8 +8,8 @@
   "name":"obj_EnemyA",
   "overriddenProperties":[],
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Enemies",
+    "path":"folders/Enemies.yy",
   },
   "parentObjectId":{
     "name":"obj_EnemyParent",
@@ -33,8 +33,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_EnemyA",
-    "path":"sprites/spr_EnemyA/spr_EnemyA.yy",
+    "name":"yellow_character",
+    "path":"sprites/yellow_character/yellow_character.yy",
   },
   "spriteMaskId":null,
   "visible":true,
