@@ -1,3 +1,5 @@
+event_inherited()
+
 draw_self();
 draw_healthbar(x-20, y-40, x+20, y-35, hp, c_black, c_red, c_lime, 0, true, true);
 
