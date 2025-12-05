@@ -1,0 +1,19 @@
+draw_self();
+draw_healthbar(x-20, y-40, x+20, y-35, hp, c_black, c_red, c_lime, 0, true, true);
+
+if (is_reloading) {
+    draw_set_halign(fa_center);
+    draw_set_color(c_black);
+    draw_text(x, y - 60, "RECARGANDO...");
+    draw_set_color(c_black);
+    draw_set_halign(fa_left);
+}
+
+if (variable_instance_exists(id, "input_shield") && input_shield && shield_ > 0) {
+    draw_set_alpha(0.4); 
+    draw_set_color(c_blue);
+    draw_circle(x, y, 40, false); 
+    
+    draw_set_alpha(1);
+    draw_set_color(c_white);
+}

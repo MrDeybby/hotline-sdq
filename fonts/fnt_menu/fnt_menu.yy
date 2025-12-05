@@ -191,8 +191,8 @@
   "maintainGms1Font":false,
   "name":"fnt_menu",
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Hector",
+    "path":"Hector.yyp",
   },
   "pointRounding":0,
   "ranges":[

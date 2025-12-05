@@ -4,7 +4,7 @@ var _intentos = 0;
 while (!_encontrado && _intentos < 100) {
     
     // 1. Elegir punto al azar
-    var _rango = 350;
+    var _rango = 500;
     var _tx = x + irandom_range(-_rango, _rango);
     var _ty = y + irandom_range(-_rango, _rango);
     

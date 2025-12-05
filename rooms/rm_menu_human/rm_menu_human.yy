@@ -17,8 +17,8 @@
   ],
   "name":"rm_menu_human",
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Hector",
+    "path":"Hector.yyp",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -370,8 +370,8 @@
   ],
   "name":"rm_AILevel3_A",
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Hector",
+    "path":"Hector.yyp",
   },
   "parentRoom":null,
   "physicsSettings":{

@@ -44,8 +44,8 @@
   },
   "origin":9,
   "parent":{
-    "name":"Smart Top Down",
-    "path":"Smart Top Down.yyp",
+    "name":"Hector",
+    "path":"Hector.yyp",
   },
   "preMultiplyAlpha":false,
   "resourceType":"GMSprite",
