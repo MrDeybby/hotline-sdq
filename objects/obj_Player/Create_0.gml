@@ -12,10 +12,16 @@ can_melee = true;
 
 state = "move";
 
-
-max_ammo = 7;       // Balas máximas
-current_ammo = 7;   // Balas actuales
-is_reloading = false; // ¿Está recargando?
-reload_time = 180;  // 3 segundos (3 * 60 frames)
+max_ammo = 7;
+current_ammo = 7;   
+is_reloading = false;
+reload_time = 180;  
 
 team = "ally";
+
+input_x = 0;
+input_y = 0;
+input_shoot = false;
+input_melee = false;
+input_shield = false;
+input_aim_dir = 0;
