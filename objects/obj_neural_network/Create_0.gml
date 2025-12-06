@@ -56,6 +56,14 @@ function evaluate_network_2(_input_vec, _hidden_act_fn=relu, _output_act_fn=sigm
     return _a;
 }
 
+// Función Scaler
+function standarScaler(max_value, min_value, value) {
+	if max_value == min_value{
+		return 0
+	}
+    return (value - min_value) / (max_value - min_value)
+}
+
 // Obtener genes
 function get_genes() {
     return { weights: net.weights, biases: net.biases };
