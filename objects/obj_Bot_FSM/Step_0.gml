@@ -1,6 +1,4 @@
-input_shield = false; // Reiniciar input
-input_melee = false;  // Reiniciar input
-input_shoot = false;
+
 
 
 switch (currentState){
@@ -57,7 +55,6 @@ switch (currentState){
 	
 	case botState.SHIELD:
 		input_shield = true;
-		break;
 	
 	case botState.WANDER:
 		go_wander()

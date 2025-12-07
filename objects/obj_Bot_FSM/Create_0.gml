@@ -1,10 +1,6 @@
 // Inherit the parent event
 event_inherited();
 
-shield_ = 0;
-max_shield = 0;
-shield_broken = true;
-
 // Estados
 enum botState {
 	WANDER,
