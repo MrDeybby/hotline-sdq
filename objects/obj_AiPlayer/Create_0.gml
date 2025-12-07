@@ -30,6 +30,22 @@ last_outputs = array_create(6, 0);
 state = botState.WANDER
 vision_radius = 400
 
+state_names = [ botState.WANDER, botState.SHIELD, botState.MELEE, 
+					botState.RANGED_ATTACK, botState.EVADE, botState.FIND_AID ];
+
+
+
+alarm[4] = 1;
+
+// Mascara de color
+hue_shift = noone // El color se da al crear el objeto en el algoritmo genetico
+
+// Funcion para cambiar el color del auto
+function change_hue_shift(_hue) {
+	hue_shift = _hue
+	image_blend = make_color_hsv(hue_shift, 200, 255);
+}
+
 // Sensores entorno
 function get_sensors() {
 	
@@ -73,7 +89,7 @@ function get_sensors() {
         }
     } else {
         // No hay nadie vivo en la sala
-        _inputs[2] = -1.0; _inputs[3] = -1.0; _inputs[4] = 0.0; // Le damos -1 para que no confunda "fuera de rango" con "No hay nadie"
+        _inputs[2] = 1.0; _inputs[3] = 1.0; _inputs[4] = 0.0; // Le damos -1 para que no confunda "fuera de rango" con "No hay nadie"
     }
     
     // --- 4. RECURSOS (Pócima) ---

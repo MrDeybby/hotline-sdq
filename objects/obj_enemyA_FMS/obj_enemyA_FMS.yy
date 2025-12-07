@@ -1,23 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"obj_AiPlayer",
+  "%Name":"obj_enemyA_FMS",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_AiPlayer",
+  "name":"obj_enemyA_FMS",
   "overriddenProperties":[],
   "parent":{
-    "name":"Player",
-    "path":"folders/Player.yy",
+    "name":"Enemies",
+    "path":"folders/Enemies.yy",
   },
   "parentObjectId":{
-    "name":"obj_Bot_FSM",
-    "path":"objects/obj_Bot_FSM/obj_Bot_FSM.yy",
+    "name":"obj_EnemyParent_2",
+    "path":"objects/obj_EnemyParent_2/obj_EnemyParent_2.yy",
   },
   "persistent":false,
   "physicsAngularDamping":0.1,
@@ -37,12 +34,9 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"pink_character",
-    "path":"sprites/pink_character/pink_character.yy",
+    "name":"yellow_character",
+    "path":"sprites/yellow_character/yellow_character.yy",
   },
-  "spriteMaskId":{
-    "name":"pink_character",
-    "path":"sprites/pink_character/pink_character.yy",
-  },
+  "spriteMaskId":null,
   "visible":true,
 }

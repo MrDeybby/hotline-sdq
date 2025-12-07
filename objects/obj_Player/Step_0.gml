@@ -82,7 +82,7 @@ move_and_collide(_hspd, _vspd, obj_wall);
 if (hp <= 0) {
     global.chests_collected = 0;
     
-    // Lógica de reinicio
+    // Lógica de reinicioaa
     if (global.game_mode == "AI") {
         if (room_exists(asset_get_index("rm_AILevel1"))) {
             room_goto(asset_get_index("rm_AILevel1"));

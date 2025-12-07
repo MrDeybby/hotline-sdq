@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"_argmax",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"_argmax",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}
