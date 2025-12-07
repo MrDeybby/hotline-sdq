@@ -11,7 +11,7 @@ var _target = noone;
 
 	// Encontrar al obj_Player más cercano que NO SEA el mismo bot ni un bot equipo.
 	with (obj_Player) {
-	    if (hp > 0 && id != other.id) {
+	    if (hp > 0 && id != other.id && team != other.team) {
 	        var _d = point_distance(x, y, other.x, other.y);
 	        if (_d < _min_dist) {
 	            _min_dist = _d;
@@ -23,8 +23,7 @@ var _target = noone;
     var _dir = point_direction(x, y, _target.x, _target.y);
     var _angle = angle_difference(image_angle, _dir); // Ángulo
 	
-// Largo de la línea
-var len = 100;
+
 // Punto final basado en el ángulo
 var x2 = x1 + lengthdir_x(_dist, _dir);
 var y2 = y1 + lengthdir_y(_dist, _dir);

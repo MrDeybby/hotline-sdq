@@ -12,47 +12,51 @@ bots = ds_list_create();
 genes = ds_list_create();
 
 
+alarm[0] = room_speed * global.ga_config[$"time_alive"];
 
 
 #region Genetic Algorithm
 
 // Crea bot
-function create_bot(_hue = noone, normal = undefined) {
+function create_bot(bot_index = 0, _hue = noone, normal = undefined) {
     
-    var _bot = instance_create_layer(x, y, "Instances", obj_bot);
-    
+    var sp = spawn_points[bot_index];
+
+    // var layer_name = "Instances_lvl" + string(sp.spawn_id);
+
+    var _bot = instance_create_layer(sp.x, sp.y, "Instances", obj_AiPlayer);
+
     _hue = (_hue == noone) ? random_range(0, 360) : _hue;
     _bot.change_hue_shift(_hue);
     _bot.log_stats = false;
-    
 
     var _bot_weights = undefined;
-    var _bot_biases = undefined;
-    
-    if (normal == true and custom_gene != undefined) {
-		_bot_weights = matrix_copy(custom_gene.weights);
-		_bot_biases = matrix_copy(custom_gene.biases);
-		_bot.change_hue_shift(custom_gene.hue)
-		new_gens = {weights: _bot_weights, biases: _bot_biases};
-		_bot.neural_network.set_genes(new_gens)
-		_bot.fitness = 10;
-		
-    }
-    else if (custom_gene != undefined) {
-		_bot_weights = matrix_copy(custom_gene.weights);
-		_bot_biases = matrix_copy(custom_gene.biases);
-        _layers_count = array_length(_bot_weights);
-        for(var lay = 0; lay < _layers_count; lay++) {
-             _bot_weights[lay] = random_bias_mutate(_bot_weights[lay], 50, -0.75, 0.75, -1, 1);
-             _bot_biases[lay] = random_bias_mutate(_bot_biases[lay], 50, -0.75, 0.75, -1, 1);
+    var _bot_biases  = undefined;
+
+    if (normal == true && custom_gene != undefined) {
+        _bot_weights = matrix_copy(custom_gene.weights);
+        _bot_biases  = matrix_copy(custom_gene.biases);
+
+        _bot.neural_network.set_genes({weights: _bot_weights, biases: _bot_biases});
+        _bot.change_hue_shift(custom_gene.hue)
+        // _bot.fitness = 10;
+
+    } else if (custom_gene != undefined) {
+        _bot_weights = matrix_copy(custom_gene.weights);
+        _bot_biases  = matrix_copy(custom_gene.biases);
+
+        var _layers = array_length(_bot_weights);
+
+        for (var i = 0; i < _layers; i++) {
+            _bot_weights[i] = random_bias_mutate(_bot_weights[i], 50, -0.75, 0.75, -1, 1);
+            _bot_biases[i]  = random_bias_mutate(_bot_biases[i], 50, -0.75, 0.75, -1, 1);
         }
 
-        new_gens = {weights: _bot_weights, biases: _bot_biases};
-		_bot.neural_network.set_genes(new_gens)
+        _bot.neural_network.set_genes({weights: _bot_weights, biases: _bot_biases});
     }
+
     return _bot;
-    
-}
+}   
 
 // Inicializa población
 function init_gen(_n) {
@@ -60,9 +64,9 @@ function init_gen(_n) {
     for (var i = 0; i < _n; i++) {
         var _bot = undefined
         if (i == 0) {
-            _bot = create_bot(noone, true);
+            _bot = create_bot(i, noone, true);
         } else {
-			_bot = create_bot();
+			_bot = create_bot(i);
 		}
         ds_list_add(bots, _bot);
     }
@@ -273,7 +277,7 @@ function next_gen() {
         if (i < _size_parents) {
             var _parent_data = parents[| i];
             
-            var new_parent = create_bot(_parent_data.hue);
+            var new_parent = create_bot(i, _parent_data.hue);
 
             new_parent.neural_network.net.weights = _parent_data.weights;
             new_parent.neural_network.net.biases = _parent_data.biases;
@@ -317,7 +321,7 @@ function next_gen() {
 			}
         }
 
-        var bot = create_bot();
+        var bot = create_bot(i);
         bot.neural_network.net.weights = child_weights;
         bot.neural_network.net.biases = child_biases;
         
@@ -339,6 +343,20 @@ function next_gen() {
     
     // room_restart();
     bots_alive = n_bots;
+	alarm[0] = room_speed * global.ga_config[$"time_alive"];
+}
+
+spawn_points = [];
+
+var idx = 0;
+with (obj_spawn_point) {
+    spawn_id = idx;
+    array_push(other.spawn_points, id);
+    idx++;
+}
+
+if (array_length(spawn_points) < n_bots) {
+    show_debug_message("ERROR: Hay más bots (" + string(n_bots) + ") que spawn points (" + string(array_length(spawn_points)) + ")");
 }
 
 // Inicializar primera generación
