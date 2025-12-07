@@ -43,3 +43,5 @@ input_shield = (_action_val > 0.66);
 
 // Heredar físicas
 event_inherited();
+
+

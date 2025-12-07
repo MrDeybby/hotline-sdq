@@ -48,7 +48,7 @@ if (_select) {
     
     switch (index) {
         case 0: 
-            room_goto(rm_AILevel1_A); 
+            room_goto(rm_training_Level1); 
             break;
             
         case 1: 
