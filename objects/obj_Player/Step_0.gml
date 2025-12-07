@@ -80,18 +80,22 @@ move_and_collide(_hspd, _vspd, obj_wall);
 
 // 5. MUERTE
 if (hp <= 0) {
-    global.chests_collected = 0;
     
-    // Lógica de reinicioaa
-    if (global.game_mode == "AI") {
-        if (room_exists(asset_get_index("rm_AILevel1"))) {
-            room_goto(asset_get_index("rm_AILevel1"));
+    if (object_index == obj_Player) {
+    
+        global.chests_collected = 0;
+        
+        // Lógica de reinicio
+        if (global.game_mode == "AI") {
+            if (room_exists(asset_get_index("rm_AILevel1"))) {
+                room_goto(asset_get_index("rm_AILevel1"));
+            } else {
+                game_restart();
+            }
         } else {
-            game_restart();
+            // Reiniciar nivel actual o ir a Menu
+            room_restart(); 
         }
-    } else {
-        // Reiniciar nivel actual o ir a Menu
-        room_restart(); 
     }
 }
 
