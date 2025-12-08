@@ -1,5 +1,3 @@
-/// @description LÓGICA FÍSICA (Sin Teclado)
-
 // 1. GESTIÓN DE ESTADO (Escudo vs Movimiento)
 // Usamos 'input_shield' en lugar de 'keyboard_check'
 if (input_shield && shield_ > 0 && !shield_broken) {
@@ -46,6 +44,7 @@ if (state == "move") {
         
         _p.owner = id; // IMPORTANTE: Para saber quién disparó
         _p.damage = 1; // Asignar daño
+		_p.team = team;
         
         // CRUCIAL: Usamos input_aim_dir. 
         // El Humano lo calcula con el Mouse, el Bot con matemáticas.
@@ -72,6 +71,7 @@ if (state == "move") {
         var _h = instance_create_layer(_spawn_x, _spawn_y, "Instances", obj_hitbox);
         _h.owner = id;
         _h.image_angle = input_aim_dir;
+		_h.team = team;
     }
 }
 
@@ -81,7 +81,7 @@ move_and_collide(_hspd, _vspd, obj_wall);
 // 5. MUERTE
 if (hp <= 0) {
     
-    if (object_index == obj_Player) {
+    if (team == "ally") {
     
         global.chests_collected = 0;
         

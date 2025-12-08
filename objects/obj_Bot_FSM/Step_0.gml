@@ -2,6 +2,10 @@ input_shield = false; // Reiniciar input
 input_melee = false;  // Reiniciar input
 input_shoot = false;
 
+// Verificamos que target exista
+if (!instance_exists(target) && (currentState == botState.MELEE || currentState == botState.RANGED_ATTACK || currentState == botState.EVADE)) {
+    currentState = botState.WANDER;
+}
 
 switch (currentState){
 	
@@ -60,11 +64,12 @@ switch (currentState){
 		break;
 	
 	case botState.WANDER:
-		go_wander()
 		target_x = wander_x;
 	    target_y = wander_y;
 		
-	    input_aim_dir = point_direction(x, y, wander_x, wander_y);
+	    if (point_distance(x, y, wander_x, wander_y) > 4) {
+             input_aim_dir = point_direction(x, y, wander_x, wander_y);
+        }
 		calculate_path()
 		break;
 }

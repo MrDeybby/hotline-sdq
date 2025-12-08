@@ -24,33 +24,54 @@ wander_radius = 100;    // Rango de Patrullaje
 path = path_add();
 target_x = x;  
 target_y = y; 
-_target = noone
-_potion = noone
+target = noone
+potion = noone
 
 function calculate_path(){
-// Calcular ruta
-    var _dist = point_distance(x, y, target_x, target_y);
+	// Detener si escudo
+	if (input_shield) {
+	    input_x = 0;
+	    input_y = 0;
+	} 
+	else {
+	    var _dist = point_distance(x, y, target_x, target_y);
     
-    if (_dist > 16) {
-        // Pathfinding global
-        if (mp_grid_path(global.mp_grid, path, x, y, target_x, target_y, true)) {
-            // Siguiente punto
-            var _next_x = path_get_point_x(path, 1);
-            var _next_y = path_get_point_y(path, 1);
+	    // Tolerancia de llegada
+	    if (_dist > 24) {
+        
+	        // Pathfinding (sin diagonales)
+	        if (mp_grid_path(global.mp_grid, path, x, y, target_x, target_y, false)) {
             
-            var _dir = point_direction(x, y, _next_x, _next_y);
+	            // Centrar en celda (Offset 16px)
+	            var _half_cell = 16; 
             
-            // Convertir a inputs
-            input_x = lengthdir_x(1, _dir);
-            input_y = lengthdir_y(1, _dir);
-        }
-    } else {
-        // Destino alcanzado
-        input_x = 0;
-        input_y = 0;
-    }	
+	            var _next_x = path_get_point_x(path, 1) + _half_cell;
+	            var _next_y = path_get_point_y(path, 1) + _half_cell;
+            
+	            var _dir = point_direction(x, y, _next_x, _next_y);
+            
+	            input_x = lengthdir_x(1, _dir);
+	            input_y = lengthdir_y(1, _dir);
+	        }
+	        else {
+	            // Fallo de camino: Detener
+	            input_x = 0;
+	            input_y = 0;
+            
+	            // Movimiento directo (Backup cercanía)
+	            if (_dist < 64 && !collision_line(x, y, target_x, target_y, obj_wall, false, false)) {
+	                var _dir = point_direction(x, y, target_x, target_y);
+	                input_x = lengthdir_x(1, _dir);
+	                input_y = lengthdir_y(1, _dir);
+	            }
+	        }
+	    } else {
+	        // Llegada
+	        input_x = 0;
+	        input_y = 0;
+	    }
+	}
 }
-
 function go_wander(){
 	
 	wander_x = x + irandom_range(-wander_radius, wander_radius);

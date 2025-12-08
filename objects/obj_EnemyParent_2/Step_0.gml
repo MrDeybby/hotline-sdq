@@ -4,7 +4,7 @@ event_inherited();
 // Gestión Muerte / Nivel
 if (hp <= 0) {
     // Siguiente nivel (si es último)
-    if (instance_number(obj_EnemyParent) <= 1) {
+    if (instance_number(obj_EnemyParent_2) <= 1) {
         
         switch (room) {
             case rm_AILevel1_A: room_goto(rm_AILevel1_B); break;
