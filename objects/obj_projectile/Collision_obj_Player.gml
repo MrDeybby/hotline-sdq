@@ -1,20 +1,22 @@
-// Verificamos que exista el dueño y que no nos estemos disparando a nosotros mismos
-if (variable_instance_exists(id, "owner") && owner != other.id) {
+// 1. IMPORTANTE: Verificamos que la bala sepa de qué equipo es (Safety check)
+if (!variable_instance_exists(id, "team")) exit; 
+
+// 2. LA CONDICIÓN MAESTRA
+if (variable_instance_exists(id, "owner") && owner != other.id && team != other.team) {
     
-    // 1. APLICAR DAÑO (Usando la variable 'damage' del proyectil)
+    // APLICAR DAÑO
     if (other.state == "shield") {
-        other.shield_ -= damage; // Restar al escudo
+        other.shield_ -= damage; 
     } else {
-        other.hp -= damage;     // Restar a la vida ojo: hp_ con guion bajo)
+        other.hp -= damage;      
     }
 
-    // 2. RECOMPENSAR AL AGENTE (IA)
-    // Si el dueño del disparo existe y es un Bot, le sumamos puntos
+    // RECOMPENSAR AL AGENTE (IA)
     if (instance_exists(owner) && owner.object_index == obj_Bot) {
         owner.damage_dealt += damage; 
-        owner.shots_hit += 1; // Opcional: contar balas acertadas para estadísticas
+        owner.shots_hit += 1; 
     }
 
-    // 3. DESTRUIR PROYECTIL
+    // DESTRUIR
     instance_destroy(); 
 }

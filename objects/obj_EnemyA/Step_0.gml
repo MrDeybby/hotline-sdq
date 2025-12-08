@@ -1,51 +1,37 @@
-// 1. Buscar objetivo
-var _target = noone;
-var _min_dist = 999999;
+// 1. BUSCAR OBJETIVO
+min_dist = 999999;
 
 with (obj_Player) {
+    // Buscar: Vivo + No soy yo + Equipo contrario
     if (hp > 0 && id != other.id && team != other.team) {
         var _d = point_distance(x, y, other.x, other.y);
-        if (_d < _min_dist) {
-            _min_dist = _d;
-            _target = id;
+        if (_d < other.min_dist) {
+            other.min_dist = _d;
+            other.target = id;
         }
     }
 }
 
-// 2. Comportamiento
-var _potion = instance_nearest(x, y, obj_potion);
-input_melee = false; 
+// 2. BUSCAR RECURSOS
+potion = instance_nearest(x, y, obj_potion);
 
-// Prioridad 1: Sobrevivir
-if (hp < (max_hp * 0.3) && instance_exists(_potion)) {
-    target_x = _potion.x;
-    target_y = _potion.y;
+// 3. MÁQUINA DE DECISIONES (CEREBRO)
+// Prioridad 1: Supervivencia (Vida < 30%)
+if (hp < (max_hp * 0.3) && instance_exists(potion)) {
+    currentState = botState.FIND_AID;
 }
-// Prioridad 2: Combate
-else if (instance_exists(_target) && _min_dist < sight_range) {
-    
-    // Perseguir
-    target_x = _target.x;
-    target_y = _target.y;
-    
-    // Apuntar
-    input_aim_dir = point_direction(x, y, _target.x, _target.y);
-    
-    // Melee
-    if (_min_dist < 60) {
-        input_melee = true;
-    }
+// Prioridad 2: Combate (Si hay target y está en rango)
+else if (instance_exists(target) && min_dist < sight_range) {
+    currentState = botState.MELEE;
 }
-// Prioridad 3: Patrullar
+// Prioridad 3: Patrullar (Por defecto)
 else {
-    target_x = wander_x;
-    target_y = wander_y;
-    
-    input_aim_dir = point_direction(x, y, wander_x, wander_y);
+    currentState = botState.WANDER;
 }
 
-// 3. Movimiento
+// 4. EJECUTAR EL CUERPO (Padre)
 event_inherited();
 
+// 5. CORRECCIONES FÍSICAS
 x = clamp(x, 16, room_width - 16);
 y = clamp(y, 16, room_height - 16);
