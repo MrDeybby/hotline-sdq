@@ -2,6 +2,9 @@
 target = noone;
 min_dist = 999999;
 
+input_shoot = false;
+input_shield = false;
+
 with (obj_Player) {
     if (hp > 0 && id != other.id && team != other.team) {
         var _d = point_distance(x, y, other.x, other.y);

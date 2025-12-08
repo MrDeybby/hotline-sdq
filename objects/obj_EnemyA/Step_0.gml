@@ -1,6 +1,9 @@
 // 1. BUSCAR OBJETIVO
 min_dist = 999999;
 
+input_melee = false;
+input_shield = false;
+
 with (obj_Player) {
     // Buscar: Vivo + No soy yo + Equipo contrario
     if (hp > 0 && id != other.id && team != other.team) {
