@@ -1,6 +1,4 @@
-input_shield = false; // Reiniciar input
-input_melee = false;  // Reiniciar input
-input_shoot = false;
+
 
 // Verificamos que target exista
 if (!instance_exists(target) && (currentState == botState.MELEE || currentState == botState.RANGED_ATTACK || currentState == botState.EVADE)) {
@@ -61,7 +59,6 @@ switch (currentState){
 	
 	case botState.SHIELD:
 		input_shield = true;
-		break;
 	
 	case botState.WANDER:
 		target_x = wander_x;
