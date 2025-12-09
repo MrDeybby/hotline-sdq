@@ -22,7 +22,7 @@ switch (currentState){
 	    if (min_dist < 60) {
 	        input_melee = true;
 	    }
-		calculate_path()
+		calculate_path2()
 		break;
 	
 	case botState.EVADE:
@@ -40,12 +40,13 @@ switch (currentState){
         if (!collision_line(x, y, target.x, target.y, obj_wall, false, false)) {
             input_shoot = true;
         }
-		calculate_path()
+		calculate_path2()
 		break;
 	
 	case botState.FIND_AID:
 		target_x = potion.x;
 		target_y = potion.y;
+		calculate_path2()
 		break;
 		
 	case botState.RANGED_ATTACK:
@@ -67,7 +68,7 @@ switch (currentState){
 	    if (point_distance(x, y, wander_x, wander_y) > 4) {
              input_aim_dir = point_direction(x, y, wander_x, wander_y);
         }
-		calculate_path()
+		calculate_path2()
 		break;
 }
 

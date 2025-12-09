@@ -27,6 +27,8 @@ start_y = y;
 last_inputs = array_create(8, 0);
 last_outputs = array_create(6, 0);
 
+alarm[4] = 1
+
 state = "idle"
 
 // Sensores entorno

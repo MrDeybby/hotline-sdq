@@ -1,3 +1,4 @@
+event_inherited()
 draw_self();
 // Punto inicial (centro del enemigo)
 var x1 = x;

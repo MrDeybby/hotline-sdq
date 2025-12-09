@@ -20,6 +20,8 @@ alarm[0] = room_speed * global.ga_config[$"time_alive"];
 // Crea bot
 function create_bot(bot_index = 0, _hue = noone, normal = undefined) {
     
+	show_debug_message("Tamaño: " + string(array_length(spawn_points)));
+	
     var sp = spawn_points[bot_index];
 
     // var layer_name = "Instances_lvl" + string(sp.spawn_id);
@@ -342,6 +344,14 @@ function next_gen() {
 
     
     // room_restart();
+	
+	// Resetear enemigos
+	with (obj_EnemyParent_2){
+		x = start_x
+		y = start_y
+			
+	}
+	
     bots_alive = n_bots;
 	alarm[0] = room_speed * global.ga_config[$"time_alive"];
 }
@@ -350,9 +360,9 @@ spawn_points = [];
 
 var idx = 0;
 with (obj_spawn_point) {
-    spawn_id = idx;
+    // spawn_id = idx;
     array_push(other.spawn_points, id);
-    idx++;
+    // idx++;
 }
 
 if (array_length(spawn_points) < n_bots) {

@@ -9,6 +9,12 @@ if (variable_instance_exists(id, "owner") && owner != other.id && team != other.
     else {
         other.hp -= 20;    
     }
-
+	
+	// RECOMPENSAR AL AGENTE (IA)
+    if (instance_exists(owner) && owner.object_index == obj_AiPlayer ) {
+		owner.damage_dealt += damage; 
+        owner.shots_hit += 1; 
+    }
+	
     instance_destroy();
 }

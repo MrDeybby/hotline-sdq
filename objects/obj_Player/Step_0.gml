@@ -39,6 +39,10 @@ if (state == "move") {
         can_shoot = false;
         alarm[0] = 20; 
         current_ammo -= 1;
+		if (instanceof(obj_AiPlayer)) {
+		    shots_fired += 1;
+		}
+
 
         var _p = instance_create_layer(x, y, "Instances", obj_projectile);
         
@@ -77,6 +81,7 @@ if (state == "move") {
 
 // 4. FÍSICAS
 move_and_collide(_hspd, _vspd, obj_wall);
+
 
 // 5. MUERTE
 if (hp <= 0) {

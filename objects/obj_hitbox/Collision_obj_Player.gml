@@ -9,5 +9,6 @@ if (variable_instance_exists(id, "owner") && owner != other.id && team != other.
     } else {
          other.hp -= 2; 
     }
-     
+    
+
 }

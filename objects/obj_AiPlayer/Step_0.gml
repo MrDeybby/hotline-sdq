@@ -29,6 +29,6 @@ for(var i=0; i<array_length(_outputs_matrix[0]); i++) {
 
 index_neuron = argmax(_outputs_array)
 currentState = state_names[index_neuron];
-
+show_debug_message("Index: "+ string(index_neuron) + "State: " + string(currentState))
 // Heredar físicas
 event_inherited();

@@ -8,7 +8,6 @@ global.mp_grid = mp_grid_create(0, 0, _h_cells, _v_cells, _cell_size, _cell_size
 mp_grid_add_instances(global.mp_grid, obj_wall, false);
 mp_grid_add_instances(global.mp_grid, obj_spike, false);
 
-
 global.chests_collected = 0; 
 global.chests_target = 0;   
 

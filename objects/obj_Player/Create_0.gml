@@ -25,3 +25,7 @@ input_shoot = false;
 input_melee = false;
 input_shield = false;
 input_aim_dir = 0;
+
+
+start_x = x;
+start_y = y;

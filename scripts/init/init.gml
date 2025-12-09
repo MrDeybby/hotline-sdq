@@ -9,9 +9,9 @@ global.nn_shooter_config = {
 
 global.ga_config = {
 	
-	"n": 2,       // Población
+	"n": 1,       // Población
     "mut": 40,     // Probabilidad mutación
     "select": 60,  // Porcentaje selección
-	"time_alive": 5 // Segundos para matar la generacion actual
+	"time_alive": 20 // Segundos para matar la generacion actual
 };
 global.custom_gene = undefined;
