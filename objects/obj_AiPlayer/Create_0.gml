@@ -17,7 +17,6 @@ time_alive = 0;
 damage_dealt = 0; 
 shots_fired = 0;
 shots_hit = 0;
-level_completed = false;
 
 start_x = x;
 start_y = y;
@@ -30,8 +29,7 @@ last_outputs = array_create(6, 0);
 state = botState.WANDER
 vision_radius = 400
 
-state_names = [ botState.WANDER, botState.SHIELD, botState.MELEE, 
-					botState.RANGED_ATTACK, botState.EVADE, botState.FIND_AID ];
+
 
 
 
@@ -40,12 +38,26 @@ alarm[4] = 1;
 // Mascara de color
 hue_shift = noone // El color se da al crear el objeto en el algoritmo genetico
 
+max_bullet = int64(global.ga_config[$"time_alive"]/ 5 * 7)
+max_seconds_alives = global.ga_config[$"time_alive"]
+
 // Funcion para cambiar el color del auto
 function change_hue_shift(_hue) {
 	hue_shift = _hue
 	image_blend = make_color_hsv(hue_shift, 200, 255);
 }
 
+
+function get_fitness(w1, w2, w3, w4) {
+	var seconds_alive = (time_alive) / room_speed;
+	
+	var h1 = standarScaler(max_seconds_alives, 0, seconds_alive); // Tiempo con vida
+	var h2 = standarScaler(max_bullet, 0, shots_fired);
+	var h3 = (shots_fired > 0) ? (shots_hit / shots_fired) : 0;
+	var h4 = damage_dealt / (damage_dealt + 1)
+	
+	return (h1 * w1) + (h2 * w2) + (h3 * w3) + (h4 * w4)
+}
 // Sensores entorno
 function get_sensors() {
 	

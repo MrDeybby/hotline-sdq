@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"standarScaler",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"standarScaler",
+  "parent":{
+    "name":"Scripts",
+    "path":"folders/Scripts.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

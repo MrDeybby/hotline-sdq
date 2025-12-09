@@ -1,16 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_wall",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"obj_wall2",
+  "eventList":[],
   "managed":true,
-  "name":"obj_wall",
+  "name":"obj_wall2",
   "overriddenProperties":[],
   "parent":{
-    "name":"Enviroment",
-    "path":"folders/Enviroment.yy",
+    "name":"Items",
+    "path":"folders/Items.yy",
   },
   "parentObjectId":null,
   "persistent":false,
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_caja",
-    "path":"sprites/spr_caja/spr_caja.yy",
+    "name":"Sprite40",
+    "path":"sprites/Sprite40/Sprite40.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -8,14 +8,12 @@ if (variable_instance_exists(id, "owner") && owner != other.id && team != other.
     if (other.state == "shield") {
         other.shield_ -= damage; 
     } else {
-        other.hp -= damage;      
+        other.hp -= damage;    
+		
+		
     }
 
-    // RECOMPENSAR AL AGENTE (IA)
-    if (instance_exists(owner) && owner.object_index == obj_Bot) {
-        owner.damage_dealt += damage; 
-        owner.shots_hit += 1; 
-    }
+   
 
     // DESTRUIR
     instance_destroy(); 

@@ -1,6 +1,5 @@
 // Inherit the parent event
 event_inherited();
-
 // Gestión Muerte / Nivel
 if (hp <= 0) {
     // Siguiente nivel (si es último)
