@@ -1,9 +1,8 @@
 // Configuración de la IA
 global.nn_shooter_config = {
-    "inputs": 10,    // Los 8 sensores que definimos
-    "h1": 12,       // Capa oculta 1
-    "h2": 8,        // Capa oculta 2
-    "outputs": 6,
+    "inputs": 10,        // Sensores
+    "hidden_layers": [2, 3], // Capas cultas
+    "outputs": 6,        // Salidas
 };
 
 global.ga_config = {
