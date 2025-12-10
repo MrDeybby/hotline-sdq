@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"yellow_character",
-    "path":"sprites/yellow_character/yellow_character.yy",
+    "name":"Sprite42",
+    "path":"sprites/Sprite42/Sprite42.yy",
   },
   "spriteMaskId":null,
   "visible":true,

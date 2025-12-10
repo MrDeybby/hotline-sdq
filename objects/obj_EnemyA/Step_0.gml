@@ -25,7 +25,12 @@ if (hp < (max_hp * 0.3) && instance_exists(potion)) {
 }
 // Prioridad 2: Combate (Si hay target y está en rango)
 else if (instance_exists(target) && min_dist < sight_range) {
-    currentState = botState.MELEE;
+	// Línea de visión limpia
+    var blocked = collision_line(x, y, target.x, target.y, obj_wall, true, true);
+
+    if (!blocked) {
+        currentState = botState.MELEE;
+    }
 }
 // Prioridad 3: Patrullar (Por defecto)
 else {
