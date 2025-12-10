@@ -3,6 +3,7 @@
         
 		with (obj_AiPlayer)
 		{
+			time_alive = max_seconds_alives
 			instance_destroy()
 		}
 		
