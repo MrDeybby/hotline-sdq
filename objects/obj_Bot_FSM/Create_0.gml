@@ -4,8 +4,8 @@ event_inherited();
 // Estados
 enum botState {
 	WANDER,
+	MELEE,
     SHIELD,
-    MELEE,
     RANGED_ATTACK,
 	EVADE,
 	FIND_AID
@@ -14,9 +14,10 @@ enum botState {
 
 currentState = botState.WANDER;
 
-state_names = [ botState.WANDER, botState.SHIELD, botState.MELEE, 
+state_names = [  botState.WANDER, botState.MELEE, botState.SHIELD, 
 					botState.RANGED_ATTACK, botState.EVADE, botState.FIND_AID ];
-string_state_names = ["WANDER", "SHIELD", "MELEE", "RANGED_ATTACK", "EVADE", "FIND_AID"]
+string_state_names = [ "WANDER", "MELEE", "SHIELD",  "RANGED_ATTACK", "EVADE", "FIND_AID"]
+
 sight_range = 300;    // Rango de vision   
 wander_radius = 100;    // Rango de Patrullaje
 path = path_add();

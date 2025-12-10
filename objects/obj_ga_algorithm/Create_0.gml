@@ -6,11 +6,10 @@ n_generations = 0;
 custom_gene = global.custom_gene;
 
 best_gene = noone;
-best_reward = 0;
+best_reward = -1000;
 
 bots = ds_list_create();
 genes = ds_list_create();
-
 
 alarm[0] = room_speed * global.ga_config[$"time_alive"];
 
@@ -19,8 +18,7 @@ alarm[0] = room_speed * global.ga_config[$"time_alive"];
 
 // Crea bot
 function create_bot(bot_index = 0, _hue = noone, normal = undefined) {
-    
-	show_debug_message("Tamaño: " + string(array_length(spawn_points)));
+   
 	
     var sp = spawn_points[bot_index];
 
@@ -349,15 +347,28 @@ function next_gen() {
 	with (obj_EnemyParent_2){
 		x = start_x
 		y = start_y
-			
+		hp = max_hp
+		shield_ = max_shield
+		shield_broken = false; 
+		current_ammo = 7;   
+		is_reloading = false;
 	}
 	
+	for (var i=0; i < ds_list_size(enemy_spawn_positions); i++) {
+		var data = enemy_spawn_positions[| i];
+		var _x_init = data[0];
+		var _y_init = data[1];
+		var _enemy_type = data[2];
+		instance_create_layer(_x_init, _y_init, "Instances", _enemy_type);
+	}
+
+	ds_list_clear(enemy_spawn_positions)
     bots_alive = n_bots;
 	alarm[0] = room_speed * global.ga_config[$"time_alive"];
 }
 
 spawn_points = [];
-
+enemy_spawn_positions = ds_list_create()
 var idx = 0;
 with (obj_spawn_point) {
     // spawn_id = idx;
@@ -373,7 +384,7 @@ if (array_length(spawn_points) < n_bots) {
 init_gen(n_bots);
 custom_gene = undefined
 bots[| n_bots - 1].log_stats = true;
-// randomize();
+//randomize();
 var s = random_get_seed();
 show_debug_message("Seed: " + string(s))
 #endregion

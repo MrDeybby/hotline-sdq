@@ -49,6 +49,7 @@ else {
     currentState = botState.WANDER;
 }
 
+	
 // 4. EJECUTAR CUERPO
 event_inherited();
 
