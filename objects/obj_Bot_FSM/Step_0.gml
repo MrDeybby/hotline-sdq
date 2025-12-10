@@ -26,20 +26,50 @@ switch (currentState){
 		break;
 	
 	case botState.EVADE:
-		// Punto de huida
-        var _flee_dir = point_direction(target.x, target.y, x, y);
+		var flee_base = point_direction(target.x, target.y, x, y);
+		var best_x = x;
+		var best_y = y;
+		var best_score = -100000;
 
-        target_x = x + lengthdir_x(200, _flee_dir);
-        target_y = y + lengthdir_y(200, _flee_dir);
-        
-        // Límites mapa
-        target_x = clamp(target_x, 16, room_width - 16);
-        target_y = clamp(target_y, 16, room_height - 16);
+		
+		for (var i = -4; i <= 4; i++) {
+		    var flee_dir = flee_base + i * 25;
 
-        // Disparar si visible
-        //if (!collision_line(x, y, target.x, target.y, obj_wall, false, false)) {
-        //    input_shoot = true;
-        //}
+		    var tx = x + lengthdir_x(200, flee_dir);
+		    var ty = y + lengthdir_y(200, flee_dir);
+
+		    
+		    if (collision_line(x, y, tx, ty, obj_wall, false, true)) continue;
+
+		    // Distancia al jugador
+		    var dist = point_distance(tx, ty, target.x, target.y);
+
+		    // Penalización si apunta a esquinas o bordes
+		    if (tx < 32 || tx > room_width - 32) dist -= 80;
+		    if (ty < 32 || ty > room_height - 32) dist -= 80;
+
+		    // Elegir mejor dirección sin usar path todavía
+		    if (dist > best_score) {
+		        best_score = dist;
+		        best_x = tx;
+		        best_y = ty;
+		    }
+		}
+
+
+		if (mp_grid_path(global.mp_grid, path, x, y, best_x, best_y, false)) {
+		    target_x = best_x;
+		    target_y = best_y;
+		} else {
+		    // Si no hay camino, plan B: mover diagonales cortas
+		    var ang = flee_base + irandom_range(-60, 60);
+		    target_x = x + lengthdir_x(100, ang);
+		    target_y = y + lengthdir_y(100, ang);
+		}
+
+	    // Después de evaluar todo, asignar
+	    target_x = best_x;
+	    target_y = best_y;
 		calculate_path()
 		break;
 	
@@ -77,6 +107,8 @@ switch (currentState){
 	    if (!collision_line(x, y, target.x, target.y, obj_wall, false, false)) {
 	        input_shoot = true;
 		}
+		input_x = 0
+		input_y = 0
 		break;
 	
 	case botState.SHIELD:

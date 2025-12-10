@@ -39,7 +39,7 @@ function create_bot(bot_index = 0, _hue = noone, normal = undefined) {
 
         _bot.neural_network.set_genes({weights: _bot_weights, biases: _bot_biases});
         _bot.change_hue_shift(custom_gene.hue)
-        // _bot.fitness = 10;
+        _bot.fitness = custom_gene.fitness;
 
     } else if (custom_gene != undefined) {
         _bot_weights = matrix_copy(custom_gene.weights);
@@ -378,11 +378,12 @@ with (obj_spawn_point) {
 
 if (array_length(spawn_points) < n_bots) {
     show_debug_message("ERROR: Hay más bots (" + string(n_bots) + ") que spawn points (" + string(array_length(spawn_points)) + ")");
+	n_bots = array_length(spawn_points);
 }
 
 // Inicializar primera generación
 init_gen(n_bots);
-custom_gene = undefined
+
 bots[| n_bots - 1].log_stats = true;
 //randomize();
 var s = random_get_seed();

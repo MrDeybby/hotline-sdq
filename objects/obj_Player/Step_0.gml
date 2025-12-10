@@ -4,6 +4,7 @@ if (input_shield && shield_ > 0 && !shield_broken) {
     state = "shield";
     shield_ -= 0.5; 
     if (shield_ <= 0) {
+		shield_ = 0
         shield_broken = true;
         alarm[2] = 120; 
     }

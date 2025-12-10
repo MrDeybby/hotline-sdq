@@ -1,15 +1,16 @@
-// Calcular fitness
 
-
-
-
-if log_stats {
-		show_debug_message("state_changes: " + string(state_changes));
-	}
 	
 if instance_exists(obj_ga_algorithm){
-	//fitness = time_alive/room_speed + (damage_dealt * 10) + hp; 
-	fitness = get_fitness();
+	
+	var _w1 = global.ga_config[$"w1"];
+	var _w2 = global.ga_config[$"w2"];
+	var _w3 = global.ga_config[$"w3"];
+	var _w4 = global.ga_config[$"w4"];
+	
+	var new_fitness = get_fitness(_w1, _w2, _w3, _w4);
+	if new_fitness > fitness{
+		fitness = new_fitness	
+	}
 }
 // Exportar genes
 if (instance_exists(neural_network) && instance_exists(obj_ga_algorithm)) {

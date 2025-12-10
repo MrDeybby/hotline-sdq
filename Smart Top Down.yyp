@@ -34,7 +34,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.0.207",
   },
   "name":"Smart Top Down",
   "resources":[
@@ -84,6 +84,8 @@
     {"id":{"name":"rm_menu_human","path":"rooms/rm_menu_human/rm_menu_human.yy",},},
     {"id":{"name":"rm_menu_main","path":"rooms/rm_menu_main/rm_menu_main.yy",},},
     {"id":{"name":"rm_path","path":"rooms/rm_path/rm_path.yy",},},
+    {"id":{"name":"rm_test_1","path":"rooms/rm_test_1/rm_test_1.yy",},},
+    {"id":{"name":"rm_test_2","path":"rooms/rm_test_2/rm_test_2.yy",},},
     {"id":{"name":"rm_training_1","path":"rooms/rm_training_1/rm_training_1.yy",},},
     {"id":{"name":"rm_training_2","path":"rooms/rm_training_2/rm_training_2.yy",},},
     {"id":{"name":"rm_training_3","path":"rooms/rm_training_3/rm_training_3.yy",},},
@@ -168,6 +170,8 @@
     {"roomId":{"name":"rm_training_1","path":"rooms/rm_training_1/rm_training_1.yy",},},
     {"roomId":{"name":"rm_training_2","path":"rooms/rm_training_2/rm_training_2.yy",},},
     {"roomId":{"name":"rm_training_3","path":"rooms/rm_training_3/rm_training_3.yy",},},
+    {"roomId":{"name":"rm_test_1","path":"rooms/rm_test_1/rm_test_1.yy",},},
+    {"roomId":{"name":"rm_test_2","path":"rooms/rm_test_2/rm_test_2.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[

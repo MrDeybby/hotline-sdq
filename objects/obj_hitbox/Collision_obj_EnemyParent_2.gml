@@ -18,9 +18,9 @@ if (variable_instance_exists(id, "owner") && owner != other.id && team != other.
 		
 		if other.hp <= 0{
 			owner.total_deaths += 1
-			show_debug_message("Mato uno")
+			//show_debug_message("Mato uno")
 		}
-		show_debug_message("Dio golpe")
+		//show_debug_message("Dio golpe")
 	}
 	
 }

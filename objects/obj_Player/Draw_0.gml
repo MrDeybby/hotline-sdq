@@ -10,7 +10,7 @@ draw_set_alpha(0.4);
 draw_rectangle(left, top, right, bottom, false);
 
 
-if (state == "shield") {
+if (state == "shield" and !shield_broken) {
     draw_set_alpha(0.5);
     draw_set_color(c_aqua); 
     draw_circle(x, y, 40, false); 

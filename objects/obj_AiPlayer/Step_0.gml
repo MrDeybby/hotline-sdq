@@ -52,14 +52,6 @@ if (frames_alive >= 10) {
     frames_alive = 0; // Reiniciar cooldown después de permitir cambio
 }
 
-if log_stats and segundos >= counter {
-	
-		show_debug_message(_outputs_array)	
-		show_debug_message(index_neuron)	
-		counter += 2
-	}
-
-
 
 // Heredar físicas
 event_inherited();

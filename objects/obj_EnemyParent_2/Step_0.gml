@@ -3,7 +3,17 @@ event_inherited();
 // Gestión Muerte / Nivel
 if (hp <= 0) {
     // Siguiente nivel (si es último)
-    if (instance_number(obj_EnemyParent_2) <= 1) {
+    if (instance_exists(obj_ga_algorithm)) {
+        
+    with (obj_ga_algorithm) {
+        ds_list_add(enemy_spawn_positions, [
+            other.start_x,
+            other.start_y,
+            other.object_index
+        ]);
+    }
+	
+    } else if (instance_number(obj_EnemyParent_2) <= 1) {
         
         switch (room) {
             case rm_AILevel1_A: room_goto(rm_AILevel1_B); break;
@@ -27,15 +37,6 @@ if (hp <= 0) {
             
             default: room_goto(rm_menu_main); break;
         }
-    } else if (instance_exists(obj_ga_algorithm)) {
-        
-    with (obj_ga_algorithm) {
-        ds_list_add(enemy_spawn_positions, [
-            other.start_x,
-            other.start_y,
-            other.object_index
-        ]);
-    }
 }
     
     // Destruir
