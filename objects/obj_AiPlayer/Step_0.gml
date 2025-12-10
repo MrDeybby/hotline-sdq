@@ -7,6 +7,14 @@ if (hp <= 0) {
 // Fitness
 time_alive++;
 
+frames_alive++
+
+
+
+input_melee = false;
+input_shield = false;
+input_shoot = false;
+input_shield = false;
 // Obtener sensores
 var _inputs_matrix = [];
 var _sensor_data = get_sensors();
@@ -23,12 +31,35 @@ var _outputs_matrix = neural_network.evaluate_network_2(_inputs_matrix);
 var _outputs_array = [];
 
 // Convertir a arreglo de 1 dimension
-for(var i=0; i<array_length(_outputs_matrix[0]); i++) {
-    array_push(_outputs_array, [_outputs_matrix[0][i]]);
+for(var i=0; i<array_length(_outputs_matrix); i++) {
+    array_push(_outputs_array, _outputs_matrix[i][0]);
 }
 
-index_neuron = argmax(_outputs_array)
-currentState = state_names[index_neuron];
-show_debug_message("Index: "+ string(index_neuron) + "State: " + string(currentState))
+var index_neuron = argmax(_outputs_array)
+var recommended_state = state_names[index_neuron];
+
+
+var segundos = time_alive / room_speed;
+
+if (frames_alive >= 10) {
+    
+    // Solo cambiar si el nuevo es diferente
+	
+    if (recommended_state != currentState) {
+        currentState = recommended_state;
+    }	
+    
+    frames_alive = 0; // Reiniciar cooldown después de permitir cambio
+}
+
+if log_stats and segundos >= counter {
+	
+		show_debug_message(_outputs_array)	
+		show_debug_message(index_neuron)	
+		counter += 2
+	}
+
+
+
 // Heredar físicas
 event_inherited();

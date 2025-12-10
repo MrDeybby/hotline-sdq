@@ -22,7 +22,7 @@ switch (currentState){
 	    if (min_dist < 60) {
 	        input_melee = true;
 	    }
-		calculate_path2()
+		calculate_path()
 		break;
 	
 	case botState.EVADE:
@@ -37,16 +37,37 @@ switch (currentState){
         target_y = clamp(target_y, 16, room_height - 16);
 
         // Disparar si visible
-        if (!collision_line(x, y, target.x, target.y, obj_wall, false, false)) {
-            input_shoot = true;
-        }
-		calculate_path2()
+        //if (!collision_line(x, y, target.x, target.y, obj_wall, false, false)) {
+        //    input_shoot = true;
+        //}
+		calculate_path()
 		break;
 	
 	case botState.FIND_AID:
-		target_x = potion.x;
-		target_y = potion.y;
-		calculate_path2()
+		if instance_exists(potion){
+			target_x = potion.x;
+			target_y = potion.y;
+			calculate_path()
+		} else if (instance_exists(obj_potion)){
+			var _min_dist_potion = 999999;
+			var _potion_target = noone;
+			with (obj_potion) {
+		        var _d = point_distance(x, y, other.x, other.y);
+		        if (_d < _min_dist_potion) {
+		            _min_dist_potion = _d;
+		            _potion_target = id;
+				}
+			}
+			if _min_dist_potion < sight_range {
+				target_x = _potion_target.x;
+				target_y = _potion_target.y;
+				calculate_path()
+			}
+			
+		} else {
+		
+		currentState = botState.WANDER
+		}
 		break;
 		
 	case botState.RANGED_ATTACK:
@@ -68,7 +89,7 @@ switch (currentState){
 	    if (point_distance(x, y, wander_x, wander_y) > 4) {
              input_aim_dir = point_direction(x, y, wander_x, wander_y);
         }
-		calculate_path2()
+		calculate_path()
 		break;
 }
 

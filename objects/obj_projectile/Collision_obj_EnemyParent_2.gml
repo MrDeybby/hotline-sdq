@@ -8,13 +8,19 @@ if (variable_instance_exists(id, "owner") && owner != other.id && team != other.
     } 
     else {
         other.hp -= 20;    
+		
+
     }
 	
 	// RECOMPENSAR AL AGENTE (IA)
-    if (instance_exists(owner) && owner.object_index == obj_AiPlayer ) {
-		owner.damage_dealt += damage; 
-        owner.shots_hit += 1; 
-    }
+	if (owner.object_index == obj_AiPlayer) {
+	    owner.damage_dealt += 20; 
+		
+		if other.hp <= 0{
+			owner.total_deaths += 1
+			show_debug_message("Mato uno")
+		}
+	}
 	
     instance_destroy();
 }

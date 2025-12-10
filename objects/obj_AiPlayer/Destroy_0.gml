@@ -1,8 +1,16 @@
 // Calcular fitness
-fitness = time_alive + (damage_dealt * 10); 
 
-if (level_completed) fitness += 2000; 
 
+
+
+if log_stats {
+		show_debug_message("state_changes: " + string(state_changes));
+	}
+	
+if instance_exists(obj_ga_algorithm){
+	//fitness = time_alive/room_speed + (damage_dealt * 10) + hp; 
+	fitness = get_fitness();
+}
 // Exportar genes
 if (instance_exists(neural_network) && instance_exists(obj_ga_algorithm)) {
     var _genes = neural_network.get_genes(); 

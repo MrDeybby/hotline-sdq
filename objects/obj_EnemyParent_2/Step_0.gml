@@ -27,7 +27,16 @@ if (hp <= 0) {
             
             default: room_goto(rm_menu_main); break;
         }
+    } else if (instance_exists(obj_ga_algorithm)) {
+        
+    with (obj_ga_algorithm) {
+        ds_list_add(enemy_spawn_positions, [
+            other.start_x,
+            other.start_y,
+            other.object_index
+        ]);
     }
+}
     
     // Destruir
     instance_destroy();
