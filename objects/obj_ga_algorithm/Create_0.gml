@@ -11,6 +11,22 @@ best_reward = -1000;
 bots = ds_list_create();
 genes = ds_list_create();
 
+// --- NUEVO: CONFIGURACIÓN DEL BENCHMARK ---
+var _path = get_save_filename("Text file|*.txt", "ga_benchmark_output.txt");
+
+if (_path != "") {
+    benchmark_filename = _path; 
+    
+    // Escribimos cabeceras (sobrescribe si ya existe para empezar limpio)
+    var _f = file_text_open_write(benchmark_filename);
+    file_text_write_string(_f, "Generation;W1_Time;W2_Kills;W3_DmgDealt;W4_DmgTaken;Fitness;Hue;Weights_JSON");
+    file_text_writeln(_f);
+    file_text_close(_f);
+} else {
+    // Si cancelas, nombre por defecto
+    benchmark_filename = "ga_benchmark_output.txt";
+}
+
 alarm[0] = room_speed * global.ga_config[$"time_alive"];
 
 
@@ -255,6 +271,31 @@ function next_gen() {
     
     // --- BENCHMARK FEATURE: CAPTURA DE DATOS ---
     // Guardamos los datos justo después de actualizar quién fue el mejor de esta generación
+    if (best_gene != noone) {
+        var _file = file_text_open_append(benchmark_filename); // Modo append
+        
+        // Usamos tus funciones auxiliares de redondeo que ya tienes en el código
+        var rounded_struct = round_gene_weights_biases(best_gene);
+        var _weights_json  = json_stringify(rounded_struct);
+
+        // Preparamos los datos
+        var _gen      = n_generations;
+		var _w1 = string(global.ga_config[$ "w1"]);
+		var _w2 = string(global.ga_config[$ "w2"]);
+		var _w3 = string(global.ga_config[$ "w3"]);
+		var _w4 = string(global.ga_config[$ "w4"]);
+        var _fit      = round2(best_reward);
+        var _hue      = round2(best_gene.hue);
+        
+        // Creamos la línea CSV: Generación;Fitness;Hue;JSON
+        var _line = string(_gen) +";" + _w1 + ";" + _w2 + ";" + _w3 + ";" + _w4 + ";" + string(_fit) + ";" + string(_hue) + ";" + _weights_json;
+        
+        file_text_write_string(_file, _line);
+        file_text_writeln(_file);
+        file_text_close(_file);
+        
+        show_debug_message("Benchmark guardado para Gen: " + string(n_generations));
+    }
     
     var _top_array = select_top(genes, select_pct);
     
