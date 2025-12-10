@@ -5,11 +5,28 @@ current_target = noone;
 
 // Configuración IA
 is_bot = true;
+
 // Crear cerebro
 neural_network = instance_create_layer(x, y, "Instances", obj_neural_network); 
 
 // Configurar capas
-neural_network.init_network([10, 6]); 
+var _cfg = global.nn_shooter_config;
+var _topology = [];
+
+// 1. Agregar capa de Entrada
+array_push(_topology, _cfg.inputs);
+
+// 2. Agregar las capas ocultas
+var _layers_array = _cfg.hidden_layers;
+for (var i = 0; i < array_length(_layers_array); i++) {
+    array_push(_topology, _layers_array[i]);
+}
+
+// 3. Agregar capa de Salida
+array_push(_topology, _cfg.outputs);
+
+// Inicializar
+neural_network.init_network(_topology);
 
 //team = "enemy";
 //show_debug_message(string(hp));
