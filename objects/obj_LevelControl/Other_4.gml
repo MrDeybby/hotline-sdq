@@ -9,9 +9,6 @@ mp_grid_add_instances(global.mp_grid, obj_wall, false);
 mp_grid_add_instances(global.mp_grid, obj_spike, false);
 
 
-show_debug_message("Grid dims: " + string(_h_cells) + " x " + string(_v_cells));
-show_debug_message("Celdas bloqueadas: " + string(mp_grid_get_cell(global.mp_grid, 0, 0)));
-
 global.chests_collected = 0; 
 global.chests_target = 0;   
 

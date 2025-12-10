@@ -52,19 +52,19 @@ if (_select) {
             break;
             
         case 1: 
-            room_goto(rm_path); 
+            room_goto(rm_test_1); 
             break;
             
         case 2: 
-            room_goto(rm_AILevel3_A); 
+            room_goto(rm_training_2); 
             break;
-            
-        case 3: 
-            room_goto(rm_AILevel4); 
+		
+		case 3: 
+            room_goto(rm_test_2); 
             break;
-            
-        case 4: 
-            room_goto(rm_menu_main); 
-            break;
+          
+		case 4:
+			room_goto(rm_path)
+			
     }
 }

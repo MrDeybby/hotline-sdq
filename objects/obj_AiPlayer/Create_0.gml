@@ -35,7 +35,7 @@ neural_network.init_network(_topology);
 log_stats = false;
 counter = 1;
 // Variables Fitness
-fitness = 0;
+fitness = -100;
 time_alive = 0;
 damage_dealt = 0; 
 
@@ -59,7 +59,8 @@ frames_alive = 0;
 state_changes_counter = 0;
 //last_state = botState.WANDER;
 currentState = botState.WANDER;
-vision_radius = 100;
+vision_radius = 200;
+wander_radius = 150;
 
 
 
@@ -88,13 +89,12 @@ function get_fitness(w1=1, w2=1, w3=1, w4=1) {
 	var h3 = damage_dealt / (damage_dealt + 1); // Total de daño 
 	var h4 =  life_taken / (life_taken + 1);
 	//var h5 = state_changes / (state_changes + max_seconds_alives);
-	if log_stats {
-		
-		show_debug_message("Tiempo en vida: " + string(seconds_alive) + "Normalizado: " + string(h1));	
-		show_debug_message("Cantidad de kills: " + string(total_deaths) + "Normalizado: " + string(h2));	
-		show_debug_message("Daño hecho: " + string(damage_dealt) + "Normalizado: " + string(h3));	
-		show_debug_message("Vida perdida: " + string(life_taken) + "Normalizado: " + string(h4));	
-	}
+	show_debug_message("Tiempo en vida: " + string(seconds_alive) + "Normalizado: " + string(h1));	
+	show_debug_message("Cantidad de kills: " + string(total_deaths) + "Normalizado: " + string(h2));	
+	show_debug_message("Daño hecho: " + string(damage_dealt) + "Normalizado: " + string(h3));	
+	show_debug_message("Vida perdida: " + string(life_taken) + "Normalizado: " + string(h4));	
+	show_debug_message("Fitness Total: " + string((h1 * w1) + (h2 * w2) + (h3 * w3) - (h4 * w4)));
+	
 	return (h1 * w1) + (h2 * w2) + (h3 * w3) - (h4 * w4);
 }
 

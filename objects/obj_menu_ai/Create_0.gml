@@ -1,3 +1,4 @@
-options = ["AI NIVEL 1", "AI NIVEL 2", "AI NIVEL 3", "AI NIVEL 4", "ATRAS"];
+options = ["AI TRAINING 1", "AI TEST 1", "AI TRAINING 2","AI TEST 2", 
+			 "ATRAS"];
 index = 0;
 op_space = 60;

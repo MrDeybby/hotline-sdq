@@ -53,6 +53,8 @@
     {"name":"rm_menu_human","order":1,"path":"rooms/rm_menu_human/rm_menu_human.yy",},
     {"name":"rm_menu_main","order":2,"path":"rooms/rm_menu_main/rm_menu_main.yy",},
     {"name":"rm_path","order":1,"path":"rooms/rm_path/rm_path.yy",},
+    {"name":"rm_test_1","order":5,"path":"rooms/rm_test_1/rm_test_1.yy",},
+    {"name":"rm_test_2","order":6,"path":"rooms/rm_test_2/rm_test_2.yy",},
     {"name":"rm_training_1","order":2,"path":"rooms/rm_training_1/rm_training_1.yy",},
     {"name":"rm_training_2","order":3,"path":"rooms/rm_training_2/rm_training_2.yy",},
     {"name":"rm_training_3","order":4,"path":"rooms/rm_training_3/rm_training_3.yy",},

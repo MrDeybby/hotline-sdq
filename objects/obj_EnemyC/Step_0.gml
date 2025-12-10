@@ -27,16 +27,20 @@ if (hp < (max_hp * 0.3) && instance_exists(potion)) {
 // Prioridad 2: Combate Táctico
 else if (instance_exists(target)) {
     
+	
+	var blocked = collision_line(x, y, target.x, target.y, obj_wall, true, true);
+	
+	
     // Si está pegado a mí (< 60): Pánico Melee
-    if (min_dist < 60) {
+    if (min_dist < 60 and !blocked) {
         currentState = botState.MELEE;
     }
-    // Si está cerca (< 250): Huir disparando
+    // Si está cerca (< 250): Huir
     else if (min_dist < 250) {
         currentState = botState.EVADE;
     }
     // Si lo veo pero está lejos: Disparar normal
-    else if (min_dist < sight_range) {
+    else if (min_dist < sight_range and !blocked) {
         currentState = botState.RANGED_ATTACK;
         
     }
